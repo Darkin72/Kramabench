@@ -9,6 +9,9 @@ data/*obscured*
 results_*/
 
 # data/environment/
+# Download with data/wildfire/input/load_data.py; exceeds GitHub's file size limit.
+data/wildfire/input/WeatherEvents_Jan2016-Dec2022.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
