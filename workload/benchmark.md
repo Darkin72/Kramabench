@@ -11,6 +11,13 @@ Tài liệu này quy định cách chấm các câu trong `Kramabench/workload` 
 - Không suy diễn một con số từ phần giải thích nếu con số cuối cùng của run khác đáp án được hỏi.
 - Khi cần quyết định cách hiểu có thể làm đổi điểm, nêu câu hỏi, hai cách chấm và mức ảnh hưởng để người yêu cầu xác nhận. Áp dụng các quyết định đã ghi theo ID trong tài liệu này.
 
+## Tổng hợp token
+
+- Cộng các trường token của từng câu trong `answer.json`. Có thể dùng `usage` trong `summary.json` sau khi xác nhận số liệu trùng nhau.
+- Báo cáo ba cột **Input** (`input_tokens`), **Output** (`output_tokens`) và **Cache** (`cached_tokens + cache_write_tokens`). Input là số đầu vào đầy đủ, đã bao gồm Cache.
+- Tổng token của run bằng Input + Output.
+- Khi ước tính chi phí theo quy ước gộp cache, áp dụng cùng một đơn giá cho token đọc và ghi cache. Số token tính theo đơn giá đầu vào thường bằng Input − Cache.
+
 ## Cách chấm theo loại đáp án
 
 ### `numeric_exact`
