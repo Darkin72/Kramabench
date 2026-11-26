@@ -14,9 +14,15 @@ Tài liệu này quy định cách chấm các câu trong `Kramabench/workload` 
 ## Tổng hợp token
 
 - Cộng các trường token của từng câu trong `answer.json`. Có thể dùng `usage` trong `summary.json` sau khi xác nhận số liệu trùng nhau.
-- Báo cáo ba cột **Input** (`input_tokens`), **Output** (`output_tokens`) và **Cache** (`cached_tokens + cache_write_tokens`). Input là số đầu vào đầy đủ, đã bao gồm Cache.
-- Tổng token của run bằng Input + Output.
-- Khi ước tính chi phí theo quy ước gộp cache, áp dụng cùng một đơn giá cho token đọc và ghi cache. Số token tính theo đơn giá đầu vào thường bằng Input − Cache.
+- **Cache** bằng `cached_tokens + cache_write_tokens`, gồm token đọc và ghi cache.
+- **Input** là token đầu vào tính theo giá thường, bằng `input_tokens - (cached_tokens + cache_write_tokens)`. **Output** bằng `output_tokens`.
+- Tổng token của run bằng **Input + Output + Cache**, tương đương tổng `input_tokens + output_tokens` trong log gốc.
+- Giữ các số đếm gốc trong JSON để đối chiếu. Các script query xuất thêm `uncached_input_tokens` và `cache_tokens` tương ứng với hai cột Input và Cache trong báo cáo.
+- Khi dùng chung đơn giá cho đọc và ghi cache, chi phí ước tính bằng công thức dưới đây nếu đơn giá tính trên một triệu token. Nếu backend tính hai mức giá cache, nhân lượng đọc và ghi với đơn giá tương ứng.
+
+```text
+Chi phí = (Input × giá_input + Output × giá_output + Cache × giá_cache) / 1.000.000
+```
 
 ## Cách chấm theo loại đáp án
 
