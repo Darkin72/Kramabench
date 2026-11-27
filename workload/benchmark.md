@@ -11,6 +11,14 @@ Tài liệu này quy định cách chấm các câu trong `Kramabench/workload` 
 - Không suy diễn một con số từ phần giải thích nếu con số cuối cùng của run khác đáp án được hỏi.
 - Khi cần quyết định cách hiểu có thể làm đổi điểm, nêu câu hỏi, hai cách chấm và mức ảnh hưởng để người yêu cầu xác nhận. Áp dụng các quyết định đã ghi theo ID trong tài liệu này.
 
+## Bảng kết quả theo workload
+
+Trong báo cáo và câu trả lời khi chấm, xuất một bảng riêng cho mỗi lượt chạy. Mỗi workload có một dòng gồm các cột `Workload`, `Điểm / số câu`, `Tỷ lệ`, `Input`, `Output`, `Cache` và `Tổng token`. Trình bày lần lượt sáu workload theo thứ tự ở mục Nguyên tắc chung, sau đó thêm dòng **Tổng** cho cả lượt.
+
+Cộng điểm và token của các câu thuộc từng workload. Tỷ lệ của mỗi dòng bằng tổng điểm chia cho số câu của dòng đó, nhân 100%. Hiển thị số token nguyên. Kiểm tra tổng của từng cột token qua sáu workload khớp với bộ đếm tương ứng của cả lượt.
+
+Khi một thư mục có hai lượt chạy cùng bộ câu hỏi, báo thêm bảng trung bình hai lượt theo từng workload và dòng **Tổng**. Cho hai lượt trọng số bằng nhau. Lấy trung bình điểm và từng cột token từ số liệu gốc, giữ mẫu số là số câu của một lượt. Token trung bình có thể có phần lẻ 0,5.
+
 ## Tổng hợp token
 
 - Cộng các trường token của từng câu trong `answer.json`. Có thể dùng `usage` trong `summary.json` sau khi xác nhận số liệu trùng nhau.
